@@ -35,7 +35,7 @@ def compute_ngrams(toks, n=2):
                 if gram not in ngrams.keys():
                         ngrams[gram] = []
                 ngrams[gram].append(tuple(tokens[i+1:i+n]))
-return ngrams
+        return ngrams
 
 
 def gen_passage(ngram_dict, length=100):
