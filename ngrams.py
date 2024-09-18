@@ -40,7 +40,7 @@ return ngrams
 
 def gen_passage(ngram_dict, length=100):
     """Generates a passage of the specified length using the given n-grams."""
-    current_token = random.choice(list(ngram_dict.keys()))
+        current_token = random.choice(list(ngram_dict.keys()))
         passage = [current_token]
         while len(passage) < length:
                 if current_token in ngram_dict.keys():
@@ -49,5 +49,5 @@ def gen_passage(ngram_dict, length=100):
                         current_token = next_token[-1]
                 else:
                         current_token = random.choice(list(ngram_dict.keys()))
-        passage.append(current_token)
+                        passage.append(current_token)
         return ' '.join(passage)
