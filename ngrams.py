@@ -31,7 +31,7 @@ def compute_ngrams(toks, n=2):
     """Returns an n-gram dictionary based on the provided list of tokens."""
         ngrams = {}
         for i in range(len(tokens)-n+1):
-                gram = ' '.join(tokens[i:i+n])
+                gram = ''.join(tokens[i:i+n])
                 if gram not in ngrams.keys():
                         ngrams[gram] = []
                 ngrams[gram].append(tuple(tokens[i+1:i+n]))
@@ -50,4 +50,4 @@ def gen_passage(ngram_dict, length=100):
                 else:
                         current_token = random.choice(list(ngram_dict.keys()))
                         passage.append(current_token)
-        return ' '.join(passage)
+        return ''.join(passage)
