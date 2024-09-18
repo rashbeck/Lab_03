@@ -29,9 +29,25 @@ ROMEO_SOLILOQUY = """
 
 def compute_ngrams(toks, n=2):
     """Returns an n-gram dictionary based on the provided list of tokens."""
-    pass
+        ngrams = {}
+        for i in range(len(tokens)-n+1):
+                gram = ' '.join(tokens[i:i+n])
+                if gram not in ngrams.keys():
+                        ngrams[gram] = []
+                ngrams[gram].append(tuple(tokens[i+1:i+n]))
+return ngrams
 
 
 def gen_passage(ngram_dict, length=100):
     """Generates a passage of the specified length using the given n-grams."""
-    pass
+    current_token = random.choice(list(ngram_dict.keys()))
+        passage = [current_token]
+        while len(passage) < length:
+                if current_token in ngram_dict.keys():
+                        next_token = random.choice(ngram_dict[current_token])
+                        passage.append(' '.join(next_token))
+                        current_token = next_token[-1]
+                else:
+                        current_token = random.choice(list(ngram_dict.keys()))
+        passage.append(current_token)
+        return ' '.join(passage)
